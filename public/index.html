@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Chat room</title>
+		<style>
+			 canvas {
+            border: 1px solid #fff;
+			margin-left: 7px;
+			border-radius: 50%;
+			margin-top: 20px;
+        			}
+		</style>
+	</head>
+	<body>
+		<div class="join-container">
+			<header class="join-header">
+				<h1>Chat room</h1>
+			</header>
+			<main class="join-main">
+				<form action="chat.html">
+					<div class="form-control">
+						<label for="username">Username</label>
+						<input
+							type="text"
+							name="username"
+							id="username"
+							placeholder="Enter username..."
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<label for="room">Room</label>
+						<select name="room" id="room">
+							<option value="Health and Beauty">Health and Beauty</option>
+							<option value="Home Decoration">Home Decoration</option>
+							<option value="mode and Fashion">Mode and Fashion</option>
+							<option value="Nutrition">Nutrition</option>
+							<option value="education">Education</option>
+						</select>
+
+					</div>
+				<div class="form-control">
+						<canvas id="myCanvas1" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas2" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas3" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas4" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas5" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas6" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas7" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas8" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas9" width="70" height="70">
+						</canvas>
+						<canvas id="myCanvas10" width="70" height="70">
+						</canvas>
+				</div>
+					
+
+					<button type="submit" class="btn">Join Chat</button>
+				</form>
+			</main>
+		</div>
+		
+		<script>
+			const imageUrls  = ['./Avatar/avatar-1.jpg', './Avatar/avatar-2.jpg', './Avatar/avatar-3.jpg', './Avatar/avatar-4.jpg', './Avatar/avatar-5.jpg', './Avatar/avatar-6.jpg', './Avatar/avatar-7.jpg', './Avatar/avatar-8.jpg', './Avatar/avatar-9.jpg', './Avatar/avatar-10.jpg'];
+
+			function drawImage(canvas, imageUrl) {
+				let context = canvas.getContext("2d");
+				const image = new Image();
+				//let image = document.createElement("img");
+				image.addEventListener('load', () => {
+					context.drawImage(image, 0, 0, canvas.width, canvas.height);
+				})
+
+				image.src =  imageUrl;
+
+			}
+
+			const canvasElements = document.querySelectorAll('canvas');
+
+			canvasElements.forEach((canvas, index) => {
+				const imageUrl = imageUrls[index];
+				drawImage(canvas, imageUrl);
+			})
+		</script>
+	</body>
+</html>
+
